@@ -1,6 +1,6 @@
 # d3-format
 
-Ever noticed how sometimes JavaScript doesn’t display numbers the way you expect? Like, you tried to print tenths with a simple loop:
+有没有注意到，有时候 `JavaScript` 对数字的显示方式与预想的不一样，比如下面这个简单的循环：
 
 ```js
 for (var i = 0; i < 10; i++) {
@@ -8,7 +8,7 @@ for (var i = 0; i < 10; i++) {
 }
 ```
 
-And you got this:
+你会得到如下结果:
 
 ```js
 0
@@ -23,11 +23,11 @@ And you got this:
 0.9
 ```
 
-Welcome to [binary floating point](https://en.wikipedia.org/wiki/Double-precision_floating-point_format)! ಠ_ಠ
+欢迎来到 [binary floating point](https://en.wikipedia.org/wiki/Double-precision_floating-point_format)! ಠ_ಠ
 
-Yet rounding error is not the only reason to customize number formatting. A table of numbers should be formatted consistently for comparison; above, 0.0 would be better than 0. Large numbers should have grouped digits (e.g., 42,000) or be in scientific or metric notation (4.2e+4, 42k). Currencies should have fixed precision ($3.50). Reported numerical results should be rounded to significant digits (4021 becomes 4000). Number formats should appropriate to the reader’s locale (42.000,00 or 42,000.00). The list goes on.
+但是，处理这种舍入问题并不是本模块出现的唯一原因。一个表格中数字的格式应该一致，以便进行比较；在上述例子中，`0.0` 要比 `0` 更容易进行对比。大数值的数字应该进行单位分组(比如 `42,000`) 或者使用科学计数法(比如 `4.2e+4`, `42k`)。货币应该有固定的精确度(比如 `$3.50`)。有时候数值结果应四舍五入为有效数字(比如 `4021` 舍入为 `4000`)。数字格式应该适合于读者的地区(比如 `42.000,00` 和 `42,000.00`)，等等。
 
-Formatting numbers for human consumption is the purpose of d3-format, which is modeled after Python 3’s [format specification mini-language](https://docs.python.org/3/library/string.html#format-specification-mini-language) ([PEP 3101](https://www.python.org/dev/peps/pep-3101/)). Revisiting the example above:
+将数值格式化为人类友好的格式是 `d3-format` 的目标，这个模块仿制了 `Python 3` 的 [format specification mini-language](https://docs.python.org/3/library/string.html#format-specification-mini-language) ([PEP 3101](https://www.python.org/dev/peps/pep-3101/))。重新查看上面的示例：
 
 ```js
 var f = d3.format(".1f");
