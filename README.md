@@ -51,7 +51,7 @@ Now you get this:
 0.9
 ```
 
-But d3-format is much more than an alias for [number.toFixed](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed)! A few more examples:
+但是 `d3-format` 的功能远远不止于类似于 [number.toFixed](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed)! 下面是个简单的例子:
 
 ```js
 d3.format(".0%")(0.123);  // rounded percentage, "12%"
@@ -63,11 +63,11 @@ d3.format("#x")(48879);   // prefixed lowercase hexadecimal, "0xbeef"
 d3.format(",.2r")(4223);  // grouped thousands with two significant digits, "4,200"
 ```
 
-See [*locale*.format](#locale_format) for a detailed specification, and try running [d3.formatSpecifier](#formatSpecifier) on the above formats to decode their meaning.
+参考 [*locale*.format](#locale_format) 获取说明符的详细介绍，运行 [d3.formatSpecifier](#formatSpecifier) 来理解说明符的含义.
 
 ## Installing
 
-If you use NPM, `npm install d3-format`. Otherwise, download the [latest release](https://github.com/d3/d3-format/releases/latest). You can also load directly from [d3js.org](https://d3js.org), either as a [standalone library](https://d3js.org/d3-format.v1.min.js) or as part of [D3 4.0](https://github.com/d3/d3). AMD, CommonJS, and vanilla environments are supported. In vanilla, a `d3` global is exported:
+`NPM` 安装 `npm install d3-format`. 此外还可以从 [d3js.org](https://d3js.org) 以 [standalone library](https://d3js.org/d3-format.v1.min.js) 或作为 [D3 4.0](https://github.com/d3/d3) 的一部分下载或直接引用。支持 `AMD`, `CommonJS`, 以及基本的标签引入形式. 如果使用标签引入，会暴露全局 `d3` 变量:
 
 ```html
 <script src="https://d3js.org/d3-format.v1.min.js"></script>
