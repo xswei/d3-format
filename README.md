@@ -78,7 +78,7 @@ var format = d3.format(".2s");
 </script>
 ```
 
-Locale files are hosted on [unpkg](https://unpkg.com/) and can be loaded using [d3.json](https://github.com/d3/d3-request/blob/master/README.md#json). For example, to set Russian as the default locale:
+区域文件托管在 [unpkg](https://unpkg.com/)，可以使用 [d3.json](https://github.com/d3/d3-request/blob/master/README.md#json) 去加载。例如将默认区域设置为 `Russian`:
 
 ```js
 d3.json("https://unpkg.com/d3-format@1/locale/ru-RU.json", function(error, locale) {
@@ -92,44 +92,44 @@ d3.json("https://unpkg.com/d3-format@1/locale/ru-RU.json", function(error, local
 });
 ```
 
-[Try d3-format in your browser.](https://tonicdev.com/npm/d3-format)
+[在浏览器中测试 `d3-format`.](https://tonicdev.com/npm/d3-format)
 
 ## API Reference
 
 <a name="format" href="#format">#</a> d3.<b>format</b>(<i>specifier</i>) [<>](https://github.com/d3/d3-format/blob/master/src/defaultLocale.js#L4 "Source")
 
-An alias for [*locale*.format](#locale_format) on the [default locale](#formatDefaultLocale).
+[default locale](#formatDefaultLocale) 下 [*locale*.format](#locale_format) 的别名。
 
 <a name="formatPrefix" href="#formatPrefix">#</a> d3.<b>formatPrefix</b>(<i>specifier</i>, <i>value</i>) [<>](https://github.com/d3/d3-format/blob/master/src/defaultLocale.js#L5 "Source")
 
-An alias for [*locale*.formatPrefix](#locale_formatPrefix) on the [default locale](#formatDefaultLocale).
+[default locale](#formatDefaultLocale) 下 [*locale*.formatPrefix](#locale_formatPrefix) 的别名.
 
 <a name="locale_format" href="#locale_format">#</a> <i>locale</i>.<b>format</b>(<i>specifier</i>) [<>](https://github.com/d3/d3-format/blob/master/src/locale.js#L18 "Source")
 
-Returns a new format function for the given string *specifier*. The returned function takes a number as the only argument, and returns a string representing the formatted number. The general form of a specifier is:
+根据指定的 *specifier* 字符串返回一个新的格式化函数。返回的函数只接受数值一个参数，并且返回经过格式化之后的数值。一般的格式说明符如下：
 
 ```
 [​[fill]align][sign][symbol][0][width][,][.precision][~][type]
 ```
 
-The *fill* can be any character. The presence of a fill character is signaled by the *align* character following it, which must be one of the following:
+填充字符 *fill* 可以是任何字符。填充字符的位置由紧跟其后的 *align* 字符决定，对齐字符必须是如下几个其中之一：
 
-* `>` - Forces the field to be right-aligned within the available space. (Default behavior).
-* `<` - Forces the field to be left-aligned within the available space.
-* `^` - Forces the field to be centered within the available space.
-* `=` - like `>`, but with any sign and symbol to the left of any padding.
+* `>` - 在可用空间内强制右对齐 (默认行为).
+* `<` - 在可用空间内强制左对齐.
+* `^` - 在可用空间内居中对齐.
+* `=` - 与 `>` 类似, but with any sign and symbol to the left of any padding.
 
-The *sign* can be:
+*sign* 可以是:
 
-* `-` - nothing for zero or positive and a minus sign for negative. (Default behavior.)
-* `+` - a plus sign for zero or positive and a minus sign for negative.
-* `(` - nothing for zero or positive and parentheses for negative.
-* ` ` (space) - a space for zero or positive and a minus sign for negative.
+* `-` - 只有负数有减号，而零和正数没有 (默认行为.)
+* `+` - 零和正数前面有加号而负数前面有减号.
+* `(` - 只有负数前面有括弧.
+* ` ` (空格) - 零个正数前面有空格，而负数前面是减号.
 
-The *symbol* can be:
+*symbol* 可以是:
 
-* `$` - apply currency symbols per the locale definition.
-* `#` - for binary, octal, or hexadecimal notation, prefix by `0b`, `0o`, or `0x`, respectively.
+* `$` - 与区域定义一致的货币符号.
+* `#` - 对于二进制，八进制或者十六进制的前缀表示，前缀分别为 `0b`, `0o`, 或 `0x`.
 
 The *zero* (`0`) option enables zero-padding; this implicitly sets *fill* to `0` and *align* to `=`. The *width* defines the minimum field width; if not specified, then the width will be determined by the content. The *comma* (`,`) option enables the use of a group separator, such as a comma for thousands.
 
