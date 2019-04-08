@@ -131,9 +131,9 @@ d3.json("https://unpkg.com/d3-format@1/locale/ru-RU.json", function(error, local
 * `$` - 与区域定义一致的货币符号.
 * `#` - 对于二进制，八进制或者十六进制的前缀表示，前缀分别为 `0b`, `0o`, 或 `0x`.
 
-The *zero* (`0`) option enables zero-padding; this implicitly sets *fill* to `0` and *align* to `=`. The *width* defines the minimum field width; if not specified, then the width will be determined by the content. The *comma* (`,`) option enables the use of a group separator, such as a comma for thousands.
+*zero* (`0`) 选项用来表示启用 `0` 填充, 这隐式地将 `fill` 设置为 `0` 并对齐到 `=`. *width* 定义了最小字段宽度; 如果没有指定，则宽度将由内容决定. *comma* (`,`) 选中表示启用分组分割，比如使用逗号表示千分位.
 
-Depending on the *type*, the *precision* either indicates the number of digits that follow the decimal point (types `f` and `%`), or the number of significant digits (types `​`, `e`, `g`, `r`, `s` and `p`). If the precision is not specified, it defaults to 6 for all types except `​` (none), which defaults to 12. Precision is ignored for integer formats (types `b`, `o`, `d`, `x`, `X` and `c`). See [precisionFixed](#precisionFixed) and [precisionRound](#precisionRound) for help picking an appropriate precision.
+根据 *type* 的不同，*precision* 要么指示小数点后的位数(类型为 `f` 和 `%` 时)，要么指示有效位数(类型为 `​`, `e`, `g`, `r`, `s` and `p` ). 如果没有指定 `precision`, 则除了 ` `（none） 以外的精度都默认为 `6`, ` `(none) 默认为 `12`. 在格式化整数时精度会被忽略(`b`, `o`, `d`, `x`, `X` 和 `c`). 参考 [precisionFixed](#precisionFixed) 和 [precisionRound](#precisionRound) 以帮助选取合适的精度.
 
 The `~` option trims insignificant trailing zeros across all format types. This is most commonly used in conjunction with types `r`, `e`, `s` and `%`. For example:
 
@@ -306,17 +306,17 @@ f(1.01); // "1.01e+0"
 
 <a name="formatLocale" href="#formatLocale">#</a> d3.<b>formatLocale</b>(<i>definition</i>) [<>](https://github.com/d3/d3-format/blob/master/src/locale.js "Source")
 
-Returns a *locale* object for the specified *definition* with [*locale*.format](#locale_format) and [*locale*.formatPrefix](#locale_formatPrefix) methods. The *definition* must include the following properties:
+根据指定的 *definition* 返一个包含 [*locale*.format](#locale_format) 和 [*locale*.formatPrefix](#locale_formatPrefix) 方法的 *locale* 对象. *definition* 必须包含以下属:
 
-* `decimal` - the decimal point (e.g., `"."`).
-* `thousands` - the group separator (e.g., `","`).
-* `grouping` - the array of group sizes (e.g., `[3]`), cycled as needed.
-* `currency` - the currency prefix and suffix (e.g., `["$", ""]`).
-* `numerals` - optional; an array of ten strings to replace the numerals 0-9.
-* `percent` - optional; the percent suffix (defaults to `"%"`).
+* `decimal` - 小数点 (e.g., `"."`).
+* `thousands` - 分组标点 (e.g., `","`).
+* `grouping` - 分组大小 (e.g., `[3]`), 循环需要.
+* `currency` - 货币前缀符号 (e.g., `["$", ""]`).
+* `numerals` - 可选; 由十个字符串组成的数组，用来替换数字 `0-9`.
+* `percent` - 可选; 百分号后缀 (默认 `"%"`).
 
-Note that the *thousands* property is a misnomer, as the grouping definition allows groups other than thousands.
+注意 *thousands* 属性是一个不准确的用词, 因为分组定义允许比千大的组.
 
 <a name="formatDefaultLocale" href="#formatDefaultLocale">#</a> d3.<b>formatDefaultLocale</b>(<i>definition</i>) [<>](https://github.com/d3/d3-format/blob/master/src/defaultLocale.js "Source")
 
-Equivalent to [d3.formatLocale](#formatLocale), except it also redefines [d3.format](#format) and [d3.formatPrefix](#formatPrefix) to the new locale’s [*locale*.format](#locale_format) and [*locale*.formatPrefix](#locale_formatPrefix). If you do not set a default locale, it defaults to [U.S. English](https://github.com/d3/d3-format/blob/master/locale/en-US.json).
+等价于 [d3.formatLocale](#formatLocale), 只不过 [d3.format](#format) 和 [d3.formatPrefix](#formatPrefix) 被重新定义为新的本地化的 [*locale*.format](#locale_format) 和 [*locale*.formatPrefix](#locale_formatPrefix). 如果没有设置本地化则默认为 [U.S. English](https://github.com/d3/d3-format/blob/master/locale/en-US.json).
