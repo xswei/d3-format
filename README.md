@@ -158,7 +158,7 @@ d3.format("~s")(1500); // "1.5k"
 * `X` - 十六进制记数法, 使用大写字母, 四舍五入为整数.
 * `c` - 在打印前将整数转换为相应的 `unicode` 字符.
 
-The type `​` (none) is also supported as shorthand for `~g` (with a default precision of 12 instead of 6), and the type `n` is shorthand for `,g`. For the `g`, `n` and `​` (none) types, decimal notation is used if the resulting string would have *precision* or fewer digits; otherwise, exponent notation is used. For example:
+`type` 为 `​` (none) 还可以作为 `~g` 的简写 (精度是 `12` 而不是 `6`), `type` 为 `n` 可以作为 `,g` 的简写. 对于 `g`, `n` 和 `​` (none) 类型, 如果结果字符串的精度或位数更少则使用十进制记数法; 否则使用指数计数法. 例如:
 
 ```js
 d3.format(".2")(42);  // "42"
@@ -169,7 +169,7 @@ d3.format(".1")(4.2); // "4"
 
 <a name="locale_formatPrefix" href="#locale_formatPrefix">#</a> <i>locale</i>.<b>formatPrefix</b>(<i>specifier</i>, <i>value</i>) [<>](https://github.com/d3/d3-format/blob/master/src/locale.js#L127 "Source")
 
-Equivalent to [*locale*.format](#locale_format), except the returned function will convert values to the units of the appropriate [SI prefix](https://en.wikipedia.org/wiki/Metric_prefix#List_of_SI_prefixes) for the specified numeric reference *value* before formatting in fixed point notation. The following prefixes are supported:
+等价于 [*locale*.format](#locale_format), 但是返回的函数会将值转化值的科学计数法形式, 然后再格式化为定点表示法, 支持以下[SI 前缀](https://en.wikipedia.org/wiki/Metric_prefix#List_of_SI_prefixes):
 
 * `y` - yocto, 10⁻²⁴
 * `z` - zepto, 10⁻²¹
@@ -189,7 +189,7 @@ Equivalent to [*locale*.format](#locale_format), except the returned function wi
 * `Z` - zetta, 10²¹
 * `Y` - yotta, 10²⁴
 
-Unlike [*locale*.format](#locale_format) with the `s` format type, this method returns a formatter with a consistent SI prefix, rather than computing the prefix dynamically for each number. In addition, the *precision* for the given *specifier* represents the number of digits past the decimal point (as with `f` fixed point notation), not the number of significant digits. For example:
+与 [*locale*.format](#locale_format) 使用 `s` 格式化类型不同，这个方法始终返回一个固定的科学计数法前缀而不是为每个数值动态计算前缀. 此外， 给定说明符的精度表示小数点后的位数（用 `f` 表示定点数）而不是有效数字的数目. 例如:
 
 ```js
 var f = d3.formatPrefix(",.0", 1e-6);
@@ -197,11 +197,11 @@ f(0.00042); // "420µ"
 f(0.0042); // "4,200µ"
 ```
 
-This method is useful when formatting multiple numbers in the same units for easy comparison. See [precisionPrefix](#precisionPrefix) for help picking an appropriate precision, and [bl.ocks.org/9764126](http://bl.ocks.org/mbostock/9764126) for an example.
+当将多个数字格式化为相同的单位以便比较时，此方法非常有用. 参考 [precisionPrefix](#precisionPrefix) 选取合适的精度. 以及示例 [bl.ocks.org/9764126](http://bl.ocks.org/mbostock/9764126).
 
 <a name="formatSpecifier" href="#formatSpecifier">#</a> d3.<b>formatSpecifier</b>(<i>specifier</i>) [<>](https://github.com/d3/d3-format/blob/master/src/formatSpecifier.js "Source")
 
-Parses the specified *specifier*, returning an object with exposed fields that correspond to the [format specification mini-language](#locale_format) and a toString method that reconstructs the specifier. For example, `formatSpecifier("s")` returns:
+解析指定的说明符 *specifier* 返回与 [format specification mini-language](#locale_format) 对应的字段描述对象和一个构造说明符的 `toString` 方法. 例如，`formatSpecifier("s")` 返回:
 
 ```js
 {
@@ -218,7 +218,7 @@ Parses the specified *specifier*, returning an object with exposed fields that c
 }
 ```
 
-This method is useful for understanding how format specifiers are parsed and for deriving new specifiers. For example, you might compute an appropriate precision based on the numbers you want to format using [precisionFixed](#precisionFixed) and then create a new format:
+此方法对于理解如何解析格式说明符以及派生新的说明符非常有用。例如你可以基于你想要使用 [precisionFixed](#precisionFixed) 格式化的数字计算一个适当的精度然后创建一个新的格式:
 
 ```js
 var s = d3.formatSpecifier("f");
