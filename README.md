@@ -135,28 +135,28 @@ d3.json("https://unpkg.com/d3-format@1/locale/ru-RU.json", function(error, local
 
 根据 *type* 的不同，*precision* 要么指示小数点后的位数(类型为 `f` 和 `%` 时)，要么指示有效位数(类型为 `​`, `e`, `g`, `r`, `s` and `p` ). 如果没有指定 `precision`, 则除了 ` `（none） 以外的精度都默认为 `6`, ` `(none) 默认为 `12`. 在格式化整数时精度会被忽略(`b`, `o`, `d`, `x`, `X` 和 `c`). 参考 [precisionFixed](#precisionFixed) 和 [precisionRound](#precisionRound) 以帮助选取合适的精度.
 
-The `~` option trims insignificant trailing zeros across all format types. This is most commonly used in conjunction with types `r`, `e`, `s` and `%`. For example:
+`~` 选项用来在所有格式类型中删除无关紧要的尾随零。通常与类型 `r`, `e`, `s` 和 `%` 一起使用. 例如: 
 
 ```js
 d3.format("s")(1500);  // "1.50000k"
 d3.format("~s")(1500); // "1.5k"
 ```
 
-The available *type* values are:
+可选的 *type* 值如下:
 
-* `e` - exponent notation.
-* `f` - fixed point notation.
-* `g` - either decimal or exponent notation, rounded to significant digits.
-* `r` - decimal notation, rounded to significant digits.
-* `s` - decimal notation with an [SI prefix](#locale_formatPrefix), rounded to significant digits.
-* `%` - multiply by 100, and then decimal notation with a percent sign.
-* `p` - multiply by 100, round to significant digits, and then decimal notation with a percent sign.
-* `b` - binary notation, rounded to integer.
-* `o` - octal notation, rounded to integer.
-* `d` - decimal notation, rounded to integer.
-* `x` - hexadecimal notation, using lower-case letters, rounded to integer.
-* `X` - hexadecimal notation, using upper-case letters, rounded to integer.
-* `c` - converts the integer to the corresponding unicode character before printing.
+* `e` - 指数符号.
+* `f` - 定点符号.
+* `g` - 十进制或指数记数法, 四舍五入到有效数字.
+* `r` - 十进制记数法, 四舍五入到有效数字.
+* `s` - 带 [SI 前缀](#locale_formatPrefix) 的十进制记数法, 四舍五入到有效数字.
+* `%` - 乘以 100 然后带有百分号的十进制计数法.
+* `p` - 乘以100, 四舍五入到有效数字, 然后是带百分号的十进制记数法.
+* `b` - 二进制记数法, 四舍五入为整数.
+* `o` - 八进制记数法, 四舍五入为整数.
+* `d` - 八进制记数法, 四舍五入为整数.
+* `x` - 十六进制记数法, 使用小写字母, 四舍五入为整数.
+* `X` - 十六进制记数法, 使用大写字母, 四舍五入为整数.
+* `c` - 在打印前将整数转换为相应的 `unicode` 字符.
 
 The type `​` (none) is also supported as shorthand for `~g` (with a default precision of 12 instead of 6), and the type `n` is shorthand for `,g`. For the `g`, `n` and `​` (none) types, decimal notation is used if the resulting string would have *precision* or fewer digits; otherwise, exponent notation is used. For example:
 
